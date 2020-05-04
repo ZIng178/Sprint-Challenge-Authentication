@@ -13,6 +13,7 @@ const server=require("../api/server")
 //     })
 // })
 
+
 beforeEach(async () => {
     await db("users").truncate()
 })
@@ -31,5 +32,16 @@ describe("Add a user", () => {
             .set({ "Authorization": token })
             expect(jokes.status).toBe(200)
             
+    })
+})
+
+describe("Auth", ()=>{
+    it ("returns a 201 if user can register", ()=>{
+        return (
+            request(server)
+            .post("/api/auth/register")
+            .send({username: "Kiran", password:"simple"})
+            .expect(201)
+        )
     })
 })
