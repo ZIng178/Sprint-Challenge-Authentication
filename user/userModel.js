@@ -11,5 +11,5 @@ function add(user){
 }
 
 function find(user){
-    return db("users").where("user")
+    return db("users").where(user)
 }
