@@ -13,5 +13,14 @@ const server=require("./server.js")
              
          })
      })
+     it("should return JSON formatted response", ()=> {
+        return request(server)
+          .get("/")
+          .then(res => {
+            expect(res.type).toMatch(/json/i);
+          });
+      });
  })
+
+
 
